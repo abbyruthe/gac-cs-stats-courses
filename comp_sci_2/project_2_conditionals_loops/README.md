@@ -26,7 +26,7 @@ randomWalker.java is a program that maps a drunkard's walk as they take steps th
 
 randomWalkers2.java takes 2 integer command-line arguments N and T where T represents a set number of independent experiments and N once again represents N number of steps that the drunkard takes. Thus, the main output of this program is the mean squared distance or the average of the T squared distances. 
 
-More information about any of these programs can be found at: https://www.cs.princeton.edu/courses/archive/fall13/cos126/assignments/loops.html
+More information about any of these programs can be found [here](https://www.cs.princeton.edu/courses/archive/fall13/cos126/assignments/loops.html).
 
 Or email me with questions! My contact can be found on my website under my profile username. 
 
