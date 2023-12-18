@@ -1,0 +1,54 @@
+allocate-registers base exponent int3 reg1 reg2 check block2 two zero block3 block4 block5 one block6 reg3
+;; step 1: create the registers for the varying input variables that the user puts in
+read base ;; reading in a value for the base variable that the user inputs
+read exponent ;; reading in a value for the exponent variable that the user inputs
+;; step 2: create a load instance that starts another register named int3 that initially contains the value 1, that will shortly be changed
+li int3 1 ;; input
+;; step 3: create a block that contains the overall while loop
+li block2 testing_remainder
+;; step 6: create a load instance that contains the value 2 so that the exponent value can be divided by 2
+li two 2
+;; step 9: create a load instance the contains the value zero so we can compare the remainder
+li zero 0
+;; step 11: create a load instance that contains the block3 which is for the even exponents
+li block3 even_exponents
+;; step 13: create a load instance that contains block 4 which is for the odd_exponents
+li block4 odd_exponents
+;; step 18: create a load instance for a block5 so we can ultimately halt the program
+li block5 stopping_block
+;; step 22: forgot to create a load instance of one for the odd_exponents statement
+li one 1
+li block6 zero_loop
+
+
+
+testing_remainder: ;; aka block2 
+;; step 7: write out the remainder statement for the initial if statement finding the remainder of the exponent when divided by 2 
+rem reg1 exponent two
+
+;; step 10: create jump conditions. So if reg2 is zero, meaning that the exponent is even, go to the block defined below. 
+jeqz reg1 block3
+
+;; step 12: otherwise, jump to block 4
+j block4
+
+zero_loop: ;; block6
+sne reg3 exponent zero
+jeqz reg3 block5
+j block2
+
+even_exponents: ;; aka block3
+;; step 14: creating the commands within the different blocks so creating the mul and division statements
+mul base base base
+div exponent exponent two
+j block6
+
+odd_exponents: ;; aka block4
+;; step 19: start creating the conditions necessary for writing out the odd exponents
+mul int3 int3 base
+sub exponent exponent one
+j block6
+
+stopping_block: ;; aka block5
+write int3
+halt

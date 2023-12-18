@@ -1,0 +1,132 @@
+
+;; next few lines of code are for allocating a bunch of registers
+allocate-registers e, cont ; the argument, continuation,
+allocate-registers val ; and result of factorial procedure
+allocate-registers factorial, base-case ; these hold labels' values
+allocate-registers sp ; this is the "stack pointer", it records how many memory locations are occupied by saved values (starting at location 0)
+allocate-registers one ; this holds the constant 1, used in several places
+allocate-registers b
+
+read b
+read e
+
+li one, 1
+li factorial, factorial-label
+li base-case, base-case-label
+;; initialize the stack pointer (nothing saved yet)
+li sp, 0
+;; set up for the top level call to factorial
+li cont, after-top-level ; the continuation is set
+;; and then we can fall right into the procedure
+
+
+;; first need to worry about the base-case
+;; so if n==0, then return 1
+;; so we start a new block 
+
+
+factorial-label:
+
+;; computes the factorial of n into val and jumps to cont;
+;; doesn't touch the first sp locations of memory and
+;; restores sp back to its entry value when cont is jumped to;
+;; assumed the factorial, base-case, and one registers hold the
+;; constant values established as the beginning of the program
+
+jeqz e, base-case ;; replace n from original code with e
+
+;; what's in base-case is this block named base-case-label
+;; if n isn't zero, we save n and cont into memory for safe keeping
+;; while computing (n-1)!; sp tells us where in memory to save them
+;; (so as not to clobber other, previously saved values), and we adjust sp to reflect the new saves
+
+st b, sp ;; store n = sp. sp atm is zero at the very beginning. Going to store the number "n" into stack-pointer. 
+
+;; replacing the stack-pointer that contains n with b
+;; takes what's in your register ("n") and stores it as a memory address ("sp") which at the moment was zero
+
+add sp, sp, one ;; your current sp (still zero in the register) get a 1 added to it and then it replaces the existing sp with that new added 
+
+;; one value
+
+st cont, sp ;; so then you're going to store what is in the cont register which is "after-top-level". 
+
+;; This reads in what is in sp which is one since we just added to it and then that then provides the address register in the data memory
+;; so in 01 in the data memory, cont which is after-top-level gets stored. 
+ 
+add sp, sp, one ;; add another one to sp making it 2
+
+;; now that we're done saving, we can set up for (n-1)!
+
+sub e,e,one ; using n-1 as the new n argument ;; replace the n's with e's
+
+;; subtract one from n in the register that it is in, so n in register 04 gets replaced with n-1
+
+li cont, after-recursive-invocation ;; the continuation ;; replace after-top-level with after-recursive-invocation in the registers
+
+j factorial 			    ;; after this call ;; jump back to factorial-label
+
+;; once it gets down to zero, it is going to jump to base-case-label
+;; from there, it is going to fill out the val register with a one and then read what is in register 5. 
+;; in this case, in register five there is a command to go to the block after-recursive-invocation which can be seen below. 
+
+;; once you get to this part, you are just "snapping up" to solve for that recursive value
+;; so after n == 0, goes down to base-case-label and then from there, the command j cont makes it jump to after-recursive-invocation block
+
+
+after-recursive-invocation:	    ;; is down here
+
+;; going to start snapping back up and multiplying those numbers back up
+;; having made it through the recursive call, the saved
+;; values of cont and n can be restored to their registers
+;; from memory; note that they are "popped" from the stack
+;; in the opposite order they were "pushed" onto the stack, 
+;; since the second one pushed wound up "on top" (i.e., later
+;; in memory), so should be retrieved first
+
+sub sp,sp,one ;; so if n = 5, then stack-pointer or sp is going to be equal to 4. So we will subtract one from that value and replace it in 
+
+;;that register = 3
+
+ld cont, sp ;; loads up what's in the stack-pointer which is after-recursive-invocation back to cont so then that value 
+
+sub sp, sp, one ;; subtract another stack-pointer so that value of 3 then comes down to being 2
+
+ld b, sp ;; load up stack-pointer to n ;; ld b instead of n
+
+;; having retrieved n and cont and set sp back to the way it 
+;; was on entry (since it went up by two and back down by two)
+;; we are ready to compute n! as (n-1)! * n, i.e. val * n, 
+;; putting the result into val, and jump to the continuation
+
+mul val, val, b ;; multiplies that val by what is in n ;; replacing n with b
+
+;; goes up each of the levels, loads up what is at that particular level first into cont so that we know what the next step to do is
+;; then loads up the next level which is a number to n and then it multiplies that by val
+;; val = 1 * (n-1)
+
+j cont ;; jumps back to after-recursive-invocation
+
+;; just going to keep jumping back to after-recursive-invocation until it gets to n
+;; val = 1 * (n-1) * n
+
+
+base-case-label:
+
+;; this is the n = 0 case, which is trivial
+
+li val, 1 ;; load up your value (the final value) with the integer 1
+
+j cont ;; jump to register called cont which contains block after-top-level
+
+
+after-top-level:
+
+;; when the top level factorial has put n! in val, it jumps
+
+write val ;; to display that result
+
+halt
+
+;; what do we do with we have something that isn't a base-case?
+;; it does not pass that jeqz test

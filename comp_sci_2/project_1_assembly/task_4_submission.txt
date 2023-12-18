@@ -1,0 +1,41 @@
+allocate-registers e, cont 
+allocate-registers val 
+allocate-registers factorial, base-case 
+allocate-registers sp
+allocate-registers one 
+allocate-registers b
+
+read b
+read e
+
+li one, 1
+li factorial, factorial-label
+li base-case, base-case-label
+li sp, 0
+li cont, after-top-level
+
+factorial-label:
+jeqz e, base-case
+st b, sp
+add sp, sp, one
+st cont, sp
+add sp, sp, one
+sub e,e,one
+li cont, after-recursive-invocation
+j factorial 
+
+after-recursive-invocation:
+sub sp,sp,one
+ld cont, sp
+sub sp, sp, one
+ld b, sp
+mul val, val, b
+j cont
+
+base-case-label:
+li val, 1
+j cont
+
+after-top-level:
+write val 
+halt

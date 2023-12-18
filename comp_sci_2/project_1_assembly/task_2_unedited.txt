@@ -1,0 +1,42 @@
+;; program should read in the base and exponent from the user, compute the power, and write out the answer. 
+
+allocate-registers base exponent int3 one block1 zero stop loop block2
+	;; step 1: takes two integers, base and exponent that are the name variables in this program. 
+read base ;; read in an input from the user and store it in a register called base
+read exponent ;; read in an input from the user and store it in a register called exponent
+
+	;; step 2: create an int3 which is the variable pow in the Python statement that is the value that will eventually be 		written out as the answer
+li int3 1
+
+li zero 0
+li one 1
+
+	;; step 4: place that loop_block made below into a register named block1
+li block1 loop_block
+li block2 stop_block
+
+	;; step 5: start to create a loop block that the functions made below will exist in
+loop_block:
+
+	;; step 3: begin writing out calculations within the Python for loops for eventually getting down to 0 in the exponent
+	;; in python, this would look like int3 = int3 * base or initially 1 = 1 * base
+mul int3 int3 base ;; indicates multiplying the int3 (which is initially one) and the base value which is input in by the use and storing it back inint3
+	;; in Python, looks like exponent = exponent - 1
+sub exponent exponent one ;; subtracts the exponent (input by user) with the number 1 which is written up above
+
+
+	;; step 6: create the instruction for the comparison signs. In this case, using greater than means
+
+	;; if the exponent is greater than one, stop = 1, else is exponent less than or equal to one, stop = 0
+sgt stop exponent zero ;; so this is stating that if the exponent is greater than zero, continue back up to the loop_block and compute step three again
+
+	;; step 7: if the sgt function does not catch the value that is going through, then it will come down to this function which states that if the 	exponent is zero, go to the stop_block
+jeqz stop block2
+	;; if it does not catch the stop register having a zero in it, then it is instructed to jump back up to block1 until the exponent is zero
+j block1
+
+
+stop_block: ;; aka block2
+write int3
+halt
+

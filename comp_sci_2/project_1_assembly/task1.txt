@@ -1,0 +1,12 @@
+;; Write a program that takes two numbers and displays the sum of their squares
+
+allocate-registers input1, input2, result
+read input1 ;; read in a user input, store it in register input1
+read input2 ;; read in a user input, store it in register input2
+
+mul input1 input1 input1
+mul input2 input2 input2
+add result input1 input2
+write result
+
+halt ;; stops program

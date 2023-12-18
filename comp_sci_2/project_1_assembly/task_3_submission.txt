@@ -1,0 +1,40 @@
+allocate-registers base exponent int3 reg1 reg2 check block2 two zero block3 block4 block5 one block6 reg3
+read base
+read exponent
+li int3 1 
+li block2 testing_remainder
+li two 2
+li zero 0
+li block3 even_exponents
+li block4 odd_exponents
+li block5 stopping_block
+li one 1
+li block6 zero_loop
+
+
+
+testing_remainder: 
+rem reg1 exponent two
+
+jeqz reg1 block3
+
+j block4
+
+zero_loop: 
+sne reg3 exponent zero
+jeqz reg3 block5
+j block2
+
+even_exponents: 
+mul base base base
+div exponent exponent two
+j block6
+
+odd_exponents: 
+mul int3 int3 base
+sub exponent exponent one
+j block6
+
+stopping_block:
+write int3
+halt
