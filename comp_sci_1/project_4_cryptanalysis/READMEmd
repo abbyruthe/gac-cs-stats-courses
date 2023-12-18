@@ -1,4 +1,4 @@
-Cryptanalysis
+# Cryptanalysis
 
 This project is for learning how to decrypt cipher text. A cryptogram (as they are more commonly referred to as) is a series of what seem to be illegible words; however, there is a pattern where the letters in the cryptogram represent other letters making it a puzzle of figuring out which letters correspond to the correct ones in order to decode the message. 
 
