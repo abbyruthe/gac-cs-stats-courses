@@ -1,4 +1,4 @@
-Recursive Graphics
+# Recursive Graphics
 
 This project focuses heavily on working with recursion and recursive carpets. 
 
