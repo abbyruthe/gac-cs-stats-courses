@@ -1,4 +1,4 @@
-Guitar Hero
+# Guitar Hero
 
 This project utilized some of the data structures that we had begun to learn. In the case of this project, we used queues. 
 
