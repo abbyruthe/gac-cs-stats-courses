@@ -1,3 +1,5 @@
+# Assembly
+
 This was the first project for Computer Science II in the Fall of 2020 instructed by Dr. Louis Yu. 
 
 The course first opened with a month long introduction to Assembly. More specifically, SLIM assembly language. SLIM was a simplified language that was utilized to show the basics of Assembly, and we ran all of our SLIM code through a SLIM machine built by professors at Gustavus standing for Super-Lean Instruction Machine which again is a boiled down version of where Assembly language would actually be run. 
@@ -33,7 +35,7 @@ The final part of this project was writing a report. This report analyzed the in
 
 In the repository, you will see that there are 2 different files for each task (except for task 1). These files are the "unedited" version which contains a plethora of comments and notes as I was coding that I left in there for logic purposes and the other is the "submission" version that is the raw code. 
 
-The explanation for the project can be found here: http://homepages.gac.edu/~lyu/teaching/mcs178-f20/project1.html
+The explanation for the project can be found [here](http://homepages.gac.edu/~lyu/teaching/mcs178-f20/project1.html).
 
 The explanation for the report can be found in the file under the name: Report_1_explanation
 
