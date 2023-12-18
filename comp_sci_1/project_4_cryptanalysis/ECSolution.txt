@@ -1,0 +1,15 @@
+MCS-177 Project 4: Extra Credit (Spring 2020)
+
+******************************************************************************************
+EXTRA CREDIT
+
+Ciphertext:
+
+CZCXYGIJJDANLYPUEGCXLUNAXCSDFULNIAEUAOLXUONLNIAEHPNGPCUGPJCJVCXNECRTCGLCOLIUVNOCVYUAODTPIFOUGIFFCSCGIJJDANLYCZCAJIXCLPUAILPCXEOCTCAOEDTIALPCNALCSXNLYECFBONEGNTFNACUAOJULDXCQDOSJCALIBCUGPIBNLEJCJVCXEIAFYNAEDGPUGIJJDANLYIBXCETIAENVFCGNLNMCAEGUAUAULJIETPCXCVCCELUVFNEPCOHPNGPHNFFEDTTIXLFNVCXUFUXLECODGULNIAUEUGIJJDANLYIBQDELNGCBUNLPUAOFCUXANASLPCGIFFCSCELXNZCELIJCCLLPCPNSPCELGFUNJEIBLXDLPUAOGIJJNLJCAL
+
+Plaintext:
+
+everycommunityhascertainregulationsandtraditionswhicheachmemberisexpectedtoabidebyandupholdacollegecommunityevenmorethanothersdependsupontheintegrityselfdisciplineandmaturejudgmentofeachofitsmembersonlyinsuchacommunityofresponsiblecitizenscananatmospherebeestablishedwhichwillsupportliberalartseducationasacommunityofjusticefaithandlearningthecollegestrivestomeetthehighestclaimsoftruthandcommitment
+
+
+
