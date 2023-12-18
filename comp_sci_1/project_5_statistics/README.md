@@ -1,4 +1,4 @@
-Not-So-Elementary Statistics
+# Not-So-Elementary Statistics
 
 This project was designed to help is determine how to write different statistical tools without using the built is function in the Math module. 
 
